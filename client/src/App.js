@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./style.css";
+import "./App.css";
+
+import SearchBar from "./components/SearchBar";
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
                 >
                     Learn React
                 </a>
+                <SearchBar />
             </header>
         </div>
     );
