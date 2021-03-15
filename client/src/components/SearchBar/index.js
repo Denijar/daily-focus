@@ -9,7 +9,12 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const SearchBar = () => {
     return (
-        <Paper component="form" action="https://www.google.com/search" method="get" target="_blank">
+        <Paper
+            component="form"
+            action="https://www.google.co.nz/search"
+            method="get"
+            target="_blank"
+        >
             <div className={styles.container}>
                 <InputBase
                     className={styles.input}
