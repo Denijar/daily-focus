@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./style.module.css";
+import styles from "./style.module.scss";
 
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
