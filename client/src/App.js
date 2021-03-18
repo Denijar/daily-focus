@@ -2,6 +2,8 @@ import React from "react";
 import logo from "./logo.svg";
 import "./style.css";
 
+import TodayDate from "./components/TodayDate";
+
 function App() {
     return (
         <div className="App">
@@ -21,6 +23,7 @@ function App() {
                     Learn React
                 </a>
             </header>
+            <TodayDate />
         </div>
     );
 }
