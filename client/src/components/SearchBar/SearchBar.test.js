@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import ShallowRenderer from "react-test-renderer/shallow";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
@@ -10,6 +11,12 @@ let component;
 
 beforeEach(() => {
     component = shallow(<SearchBar />);
+});
+
+test("it renders correctly", () => {
+    const renderer = new ShallowRenderer();
+    const component = renderer.render(<SearchBar />);
+    expect(component).toMatchSnapshot();
 });
 
 test("it contains Material UI Paper, InputBase, and IconButton components", () => {
