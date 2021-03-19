@@ -1,10 +1,15 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { test, expect } from "@testing-library/jest-dom";
-import App from ".";
+import { shallow } from "enzyme";
 
-test("renders learn react link", () => {
-    render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+import App from "./App";
+import Header from "./components/Header";
+
+let component;
+
+beforeEach(() => {
+    component = shallow(<App />);
+});
+
+test("it contains a Header component", () => {
+    expect(component.find(Header)).toHaveLength(1);
 });
