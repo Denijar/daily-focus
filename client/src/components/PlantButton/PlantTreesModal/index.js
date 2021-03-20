@@ -19,21 +19,25 @@ function PlantTreesModal({ waterCoins, onSpendPoint }) {
     };
 
     const handlePlantGrowth = () => {
-        console.log("hande growth");
         if (waterCoins > 0) {
-            var newProgress = config.progress + 1;
-            console.log("in growth", waterCoins, newProgress);
-            setConfig({ ...config, progress: newProgress });
+            const newProgress = config.progress + 1;
             if (newProgress >= POINTS.FULL_GROWN) {
                 setConfig({
                     ...config,
                     plantSize: 3,
+                    progress: newProgress,
                     feedback: stateUtils.feedback.win,
                 }); //Change to the big trees pictures
+                console.log(config);
             } else if (newProgress >= POINTS.SMALL) {
-                setConfig({ ...config, plantSize: 2 }); //Change to the medium trees pictures
+                setConfig({ ...config, plantSize: 2, progress: newProgress }); //Change to the medium trees pictures
             } else if (newProgress >= POINTS.SEEDLING) {
-                setConfig({ ...config, plantSize: 1 }); //Change to the small trees pictures
+                setConfig({ ...config, plantSize: 1, progress: newProgress }); //Change to the small trees pictures
+            } else {
+                setConfig({
+                    ...config,
+                    progress: newProgress,
+                }); //Change to the big trees pictures
             }
             onSpendPoint();
         } else {
