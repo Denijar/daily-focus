@@ -11,9 +11,9 @@ beforeEach(() => {
 });
 
 test("it renders correctly", () => {
-    const renderer = new ShallowRenderer();
-    const component = renderer.render(<Header />);
-    expect(component).toMatchSnapshot();
+    const shallowRenderer = new ShallowRenderer();
+    const snapshotComponent = shallowRenderer.render(<Header />);
+    expect(snapshotComponent).toMatchSnapshot();
 });
 
 test("it contains a Header component", () => {
