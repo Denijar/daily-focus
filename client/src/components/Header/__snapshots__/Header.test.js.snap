@@ -20,7 +20,7 @@ exports[`it renders correctly 1`] = `
   <div
     className="dateTime"
   >
-    10:09 AM | Monday 8 March
+    <DateTime />
   </div>
   <div
     className="searchBar"
