@@ -5,8 +5,6 @@ import LandingPage from "./components/LandingPage";
 import Header from "./components/Header";
 import "./App.css";
 
-import ToDoList from "./components/ToDoList";
-
 function App() {
     return (
         <BrowserRouter>
@@ -22,7 +20,6 @@ function App() {
                 <Route exact path="/home">
                     {/* Replace following component with actual Home component when created */}
                     <Header />
-                    <ToDoList />
                 </Route>
             </Switch>
         </BrowserRouter>

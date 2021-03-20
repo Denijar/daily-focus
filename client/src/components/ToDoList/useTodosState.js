@@ -101,10 +101,8 @@ function useTodosState(initialTodos, setIsAddingItem) {
             newList[date] = newListOnThatDay;
             setTodoList(newList);
             saveListToStorage(newList);
-            console.log("new task points", newTaskPoints);
             setTaskPoints(newTaskPoints);
             saveTaskPointsToStorage(newTaskPoints);
-            console.log("here");
         },
         taskPoints,
         spendPoint: () => {

@@ -28,7 +28,6 @@ function PlantTreesModal({ waterCoins, onSpendPoint }) {
                     progress: newProgress,
                     feedback: stateUtils.feedback.win,
                 }); //Change to the big trees pictures
-                console.log(config);
             } else if (newProgress >= POINTS.SMALL) {
                 setConfig({ ...config, plantSize: 2, progress: newProgress }); //Change to the medium trees pictures
             } else if (newProgress >= POINTS.SEEDLING) {
@@ -55,7 +54,7 @@ function PlantTreesModal({ waterCoins, onSpendPoint }) {
             <div className={styles.appHeader}>Grow your plant</div>
 
             <div>
-                {`Points: ${waterCoins}`}
+                {`Tasks Completed: ${waterCoins}`}
                 {/* plant display */}
                 <Plant plantImage={stateUtils.plantImageUrls[config.plantSize]}></Plant>
                 {/* control buttons */}
