@@ -8,7 +8,6 @@ const saveListToStorage = (list) => {
 
 const saveTaskPointsToStorage = (taskPoints) => {
     localStorage.setItem("taskPoints", taskPoints);
-    console.log("setting points to storage", taskPoints);
 };
 
 const sortOverallTodosByDate = (overallTodos) => {
@@ -93,16 +92,19 @@ function useTodosState(initialTodos, setIsAddingItem) {
         },
         toggleCheck: (index, date) => {
             const newListOnThatDay = [...todoList[date]];
-            if (newListOnThatDay[index].checked) {
-                setTaskPoints(taskPoints + 1); // gain a point if you are checking the task as done
-                console.log(taskPoints);
+            let newTaskPoints = taskPoints;
+            if (!newListOnThatDay[index].checked) {
+                newTaskPoints++;
             }
             newListOnThatDay[index].checked = !newListOnThatDay[index].checked;
             const newList = { ...todoList };
             newList[date] = newListOnThatDay;
             setTodoList(newList);
             saveListToStorage(newList);
-            saveTaskPointsToStorage(taskPoints);
+            console.log("new task points", newTaskPoints);
+            setTaskPoints(newTaskPoints);
+            saveTaskPointsToStorage(newTaskPoints);
+            console.log("here");
         },
         taskPoints,
         spendPoint: () => {
