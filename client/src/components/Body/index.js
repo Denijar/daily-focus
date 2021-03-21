@@ -22,9 +22,9 @@ function Body({ selectedWidgets, setSelectedWidgets }) {
         <div className={styles.gridContainer}>
             {selectedWidgets && selectedWidgets.length ? (
                 <Grid container justify="center" spacing={4} className={classes.grid}>
-                    {selectedWidgets.includes("Timer") && <Timer />}
                     {selectedWidgets.includes("To Do List") && <ToDoList />}
                     {selectedWidgets.includes("Calendar") && <div>Calendar</div>}
+                    {selectedWidgets.includes("Timer") && <Timer />}
                 </Grid>
             ) : (
                 <div className={styles.noWidgetContainer}>
