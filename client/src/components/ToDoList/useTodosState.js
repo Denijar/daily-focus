@@ -95,6 +95,8 @@ function useTodosState(initialTodos, setIsAddingItem) {
             let newTaskPoints = taskPoints;
             if (!newListOnThatDay[index].checked) {
                 newTaskPoints++;
+            } else {
+                newTaskPoints = newTaskPoints ? newTaskPoints - 1 : 0; // if unchecking, decrement task points with a minimum of 0
             }
             newListOnThatDay[index].checked = !newListOnThatDay[index].checked;
             const newList = { ...todoList };
@@ -106,8 +108,9 @@ function useTodosState(initialTodos, setIsAddingItem) {
         },
         taskPoints,
         spendPoint: () => {
-            setTaskPoints(taskPoints ? taskPoints - 1 : 0);
-            saveTaskPointsToStorage(taskPoints);
+            const newTaskPoints = taskPoints ? taskPoints - 1 : 0;
+            setTaskPoints(newTaskPoints);
+            saveTaskPointsToStorage(newTaskPoints);
         },
     };
 }
