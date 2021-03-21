@@ -20,9 +20,8 @@ const useStyles = makeStyles({
     },
 });
 
-function SelectWidgetsModal() {
+function SelectWidgetsModal({ selectedWidgets, setSelectedWidgets }) {
     const [open, setOpen] = useState(false);
-    const [selectedWidgets, setSelectedWidgets] = useState([]);
 
     const classes = useStyles();
 
