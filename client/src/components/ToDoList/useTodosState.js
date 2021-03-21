@@ -96,7 +96,7 @@ function useTodosState(initialTodos, setIsAddingItem) {
             if (!newListOnThatDay[index].checked) {
                 newTaskPoints++;
             } else {
-                newTaskPoints = newTaskPoints ? newTaskPoints - 1 : 0; // if unchecking, decrement task points with a minimum of 0
+                newTaskPoints = newTaskPoints ? newTaskPoints - 1 : 0; // if unchecking, decrement task points to a minimum of 0
             }
             newListOnThatDay[index].checked = !newListOnThatDay[index].checked;
             const newList = { ...todoList };

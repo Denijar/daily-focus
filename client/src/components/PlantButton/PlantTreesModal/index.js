@@ -6,10 +6,14 @@ import stateUtils from "../stateUtils";
 
 import styles from "./style.module.scss";
 
+import createPersistedState from "use-persisted-state";
+const usePlantProgressState = createPersistedState("plantProgress");
+
 function PlantTreesModal({ waterCoins, onSpendPoint }) {
+    const [plantProgress, setPlantProgress] = usePlantProgressState(0);
+
     const [config, setConfig] = useState({
         plantSize: 0, //This var shows different trees pictures
-        progress: 0, //This var control the progressbar
         feedback: stateUtils.feedback.start,
     });
     const POINTS = {
@@ -20,32 +24,27 @@ function PlantTreesModal({ waterCoins, onSpendPoint }) {
 
     const handlePlantGrowth = () => {
         if (waterCoins > 0) {
-            const newProgress = config.progress + 1;
+            const newProgress = plantProgress + 1;
             if (newProgress >= POINTS.FULL_GROWN) {
                 setConfig({
                     ...config,
                     plantSize: 3,
-                    progress: newProgress,
                     feedback: stateUtils.feedback.win,
                 }); //Change to the big trees pictures
             } else if (newProgress >= POINTS.SMALL) {
-                setConfig({ ...config, plantSize: 2, progress: newProgress }); //Change to the medium trees pictures
+                setConfig({ ...config, plantSize: 2 }); //Change to the medium trees pictures
             } else if (newProgress >= POINTS.SEEDLING) {
-                setConfig({ ...config, plantSize: 1, progress: newProgress }); //Change to the small trees pictures
-            } else {
-                setConfig({
-                    ...config,
-                    progress: newProgress,
-                }); //Change to the big trees pictures
+                setConfig({ ...config, plantSize: 1 }); //Change to the small trees pictures
             }
             onSpendPoint();
+            setPlantProgress(newProgress);
         } else {
             setConfig({ ...config, buttonState: false, feedback: stateUtils.feedback.noCoin });
         }
     };
     //show the progressbar
     const getProgress = () => {
-        const progressPercentage = Math.round((config.progress / POINTS.FULL_GROWN) * 100);
+        const progressPercentage = Math.round((plantProgress / POINTS.FULL_GROWN) * 100);
         return progressPercentage < 100 ? progressPercentage : 100;
     };
 
